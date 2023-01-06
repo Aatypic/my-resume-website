@@ -15,18 +15,22 @@ font-style: normal; */
 	--fs-400: 0.935rem;
 	--fs-500: 1rem;
 	--fs-600: 1rem;
-	--fs-700: 1.5rem;
-	--fs-800: 3.5rem;
+	--fs-700: 4rem;
+
+	--fs-750: clamp(4rem, 5vw + 1rem, 4.9rem);
+	--fs-800: 6rem;
+	--fs-850: clamp(3rem, 5.2vw + 1rem, 6.5rem);
 	--fs-900: clamp(5rem, 8vw + 1rem, 9.375rem);
+	--fs-950: clamp(6.3rem, 8vw + 1rem, 9.375rem);
 
 	/* colors */
-	--clr-primary: hsl(9, 61%, 59%);
-	--clr-accent: hsl(218, 51%, 28%);
-	--clr-neutral: hsl(0, 100%, 100%);
+	--clr-primary: 9, 61%, 59%;
+	--clr-accent: 218, 51%, 28%;
+	--clr-neutral: 0, 100%, 100%;
 }
 
 * {
-	/* outline: 1px solid yellow; */
+	outline: 1px solid yellow;
 }
 
 *,
@@ -156,11 +160,22 @@ img {
 .fs-700 {
 	font-size: var(--fs-700);
 }
+.fs-750 {
+	font-size: var(--fs-750);
+}
 .fs-800 {
 	font-size: var(--fs-800);
 }
+
+.fs-850 {
+	font-size: var(--fs-850);
+}
+
 .fs-900 {
 	font-size: var(--fs-900);
+}
+.fs-950 {
+	font-size: var(--fs-950);
 }
 
 .fs-600,
@@ -168,6 +183,16 @@ img {
 .fs-800,
 .fs-900 {
 	line-height: 1.1;
+}
+
+.letter-spacing-3 {
+	letter-spacing: 4.75px;
+}
+.letter-spacing-2 {
+	letter-spacing: 2.7px;
+}
+.letter-spacing-1 {
+	letter-spacing: 2.35px;
 }
 /* ----------------- */
 
@@ -187,6 +212,89 @@ img {
 
 body {
 	font-family: var(--ff-primary);
-	background: lightgray;
+}
+
+main {
 	padding: 1rem;
+}
+h3 {
+	text-transform: uppercase;
+	font-size: var(--fs-600);
+	letter-spacing: 1.2px;
+	font-weight: 400;
+}
+
+.hero {
+	grid-template-columns: 1fr 0.5fr;
+	grid-template-areas:
+		"job card"
+		"intro card";
+}
+.job {
+	grid-area: job;
+	padding: 2rem 0;
+	position: relative;
+}
+.job::before {
+	content: "";
+	display: block;
+	width: 100%;
+	height: 100%;
+	background: hsl(var(--clr-accent));
+	position: absolute;
+	top: 0;
+	left: -10%;
+
+	border-radius: 1rem;
+	z-index: -1;
+}
+
+.card {
+	grid-area: card;
+
+	position: relative;
+	width: 100%;
+	/* background-image: url("assets/me-summer-cap.png"); */
+	background-color: hsl(var(--clr-primary));
+	background-size: cover;
+	border-radius: 2em;
+}
+.card__overlay {
+	z-index: 2;
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	background-size: cover;
+	mix-blend-mode: lighten;
+}
+.card__img {
+	border-radius: 2em;
+	transform: translateZ(-120px);
+	box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.6), -5px -5px 7px rgba(210, 210, 210, 0.22);
+}
+
+.intro {
+	grid-area: intro;
+}
+
+.parallax__bloc {
+	display: block;
+	/* width: 100px;
+	height: 100px; */
+	background-color: hsl(var(--clr-primary));
+}
+
+header li {
+	background: grey;
+}
+
+.email::before {
+	content: url(/assets/SVG/mail.svg);
+	display: block;
+	width: 3rem;
+	color: blue;
 }
